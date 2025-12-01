@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Sumon Sarker - Professional WordPress Website Developer Portfolio
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <header class="main-header">
+      <div class="container header-container">
+        <div class="logo">
+          <a href="#">
+            <img src="images/sam-logo.png" alt="Sumon Sarker Logo" style="width: 200px" />
+          </a>
+        </div>
+        <nav class="nav-links">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="blog.html" style="color: #FF4C60;">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <a
+          href="images/cv.pdf"
+          download
+          class="btn primary-btn download-cv-btn pulse-on-hover"
+        >
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </header>
+
+    <section class="page-header-banner">
+        <h1>Blog</h1>
+    </section>
+
+    <section class="section blog-page-section">
+    <div class="container">
+        
+        <div class="blog-layout-grid">
+
+            <aside class="blog-sidebar">
+                
+                <div class="sidebar-widget floating-container-inner-alt">
+                    <h3 class="widget-title">Search Articles</h3>
+                    <form class="search-form" onsubmit="return false;">
+                        <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="filterBlogs()">
+                        <button type="button"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="sidebar-widget floating-container-inner-alt">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('all')">All Topics <span>(5)</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('theme')">WordPress Themes <span>(1)</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('plugins')">Plugins & Tools <span>(1)</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('design')">Web Design <span>(1)</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('seo')">SEO & Marketing <span>(1)</span></a></li>
+                        <li><a href="javascript:void(0)" onclick="filterByCategory('performance')">Performance <span>(1)</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget floating-container-inner-alt">
+                    <h3 class="widget-title">Popular Tags</h3>
+                    <div class="tag-cloud">
+                        <a href="javascript:void(0)" onclick="filterByCategory('theme')">#Themes</a>
+                        <a href="javascript:void(0)" onclick="filterByCategory('plugins')">#Plugins</a>
+                        <a href="javascript:void(0)" onclick="filterByCategory('seo')">#SEO</a>
+                        <a href="javascript:void(0)" onclick="filterByCategory('design')">#Responsive</a>
+                        <a href="javascript:void(0)" onclick="filterByCategory('performance')">#Speed</a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <div class="blog-posts-container" id="blogContainer">
+
+                <article class="single-blog-item floating-container-inner-alt hover-effect" data-category="theme">
+                    <div class="blog-thumb">
+                        <img src="images/custom.jpeg" alt="WordPress Theme Customization">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> Nov 28, 2025</span>
+                            <span><i class="far fa-folder"></i> Themes</span>
+                        </div>
+                        <h3><a href="javascript:void(0)" onclick="toggleBlogContent(this)">Mastering WordPress Theme Customization: A Developer's Handbook</a></h3>
+                        
+                        <p class="visible-excerpt">
+                            Creating a truly unique digital presence requires more than just installing a pre-made template; it demands a deep understanding of theme customization principles. Click the heading to read the full technical roadmap on Child Themes, Template Hierarchy, and professional code overrides.
+                        </p>
+
+                        <div class="full-content-area">
+                            <p>
+                                The professional approach mandates the use of **Child Themes**, which serve as an essential safeguard, ensuring that your custom CSS and PHP modifications remain intact even after the parent theme receives updates. This comprehensive guide explores how to leverage the WordPress Template Hierarchy to override core theme files and inject new features without compromising system integrity. We discuss advanced techniques for custom development versus the efficiency of modern visual builders, helping you determine the most sustainable strategy for long-term site maintenance and performance. Mastering these steps is crucial for developers and business owners seeking a stable, unique, and future-proof website design.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="single-blog-item floating-container-inner-alt hover-effect" data-category="plugins">
+                    <div class="blog-thumb">
+                        <img src="images/plugin.jpeg" alt="Top WordPress Plugins">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> Nov 25, 2025</span>
+                            <span><i class="far fa-folder"></i> Plugins</span>
+                        </div>
+                        <h3><a href="javascript:void(0)" onclick="toggleBlogContent(this)">The Indispensable WordPress Plugins for a High-Performance Site</a></h3>
+                        
+                        <p class="visible-excerpt">
+                            The strength of the WordPress ecosystem lies in its vast repository of plugins, yet selecting the optimal stack is critical for a high-performing site—too many can introduce vulnerabilities and slow down your server. Click to see the essential categories and top recommendations for 2025.
+                        </p>
+
+                        <div class="full-content-area">
+                            <p>
+                                This article curates a list of the most essential plugins required for any professional website in 2025. We categorize them into three key areas: **Security** (e.g., firewall and malware scanning tools), **SEO** (leading solutions for on-page and technical optimization), and **Performance** (caching and image optimization). We provide configuration tips to help you utilize these tools effectively, avoid plugin conflicts, and ensure your site runs efficiently, securely, and scalably without unnecessary bloat, thereby maximizing user retention and search engine favorability.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="single-blog-item floating-container-inner-alt hover-effect" data-category="design">
+                    <div class="blog-thumb">
+                        <img src="images/respon.jpeg" alt="Responsive Web Design">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> Nov 20, 2025</span>
+                            <span><i class="far inter-folder"></i> Web Design</span>
+                        </div>
+                        <h3><a href="javascript:void(0)" onclick="toggleBlogContent(this)">Cutting-Edge Responsive Web Design Techniques in a Mobile-First World</a></h3>
+                        
+                        <p class="visible-excerpt">
+                            In an era where mobile internet usage has far surpassed desktop browsing, adopting a genuine "mobile-first" design philosophy is paramount for modern web development. Click the heading to dive into the technical details on CSS Grid, media queries, and UX factors.
+                        </p>
+
+                        <div class="full-content-area">
+                            <p>
+                                Responsive design extends far beyond simply using flexible grids; it requires intelligent application of advanced CSS techniques, including Flexbox and Grid, coupled with precise media queries targeting specific device breakpoints. In this in-depth piece, we delve into optimizing typography and image assets for various resolutions, guaranteeing sharp visuals and optimal readability from large 4K screens down to the smallest smartphone displays. Crucially, we cover essential User Experience (UX) factors such as proper touch-target sizing and accessibility standards, ensuring your website not only adapts visually but provides a flawless, functional experience across every device type and operating system.
+                            </p>
+                        </div>
+                    </article>
+
+                <article class="single-blog-item floating-container-inner-alt hover-effect" data-category="seo">
+                    <div class="blog-thumb">
+                        <img src="images/optmi.jpeg" alt="SEO Optimization">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> Nov 15, 2025</span>
+                            <span><i class="far fa-folder"></i> SEO</span>
+                        </div>
+                        <h3><a href="javascript:void(0)" onclick="toggleBlogContent(this)">The Definitive Guide to SEO Optimization for WordPress Success</a></h3>
+                        
+                        <p class="visible-excerpt">
+                            Achieving high search engine rankings requires a systematic and diligent SEO strategy, despite WordPress being an inherently SEO-friendly platform. Click to explore the complete technical blueprint for mastering both On-Page and Technical SEO.
+                        </p>
+
+                        <div class="full-content-area">
+                            <p>
+                                This detailed guide provides a practical blueprint for mastering both **On-Page** and **Technical SEO**. We break down crucial steps, including conducting rigorous keyword research, structuring your content with logical heading tag hierarchy (H1, H2, H3), and crafting compelling meta descriptions that boost click-through rates. Technically, we cover the implementation of Schema Markup for rich snippets, ensuring proper XML sitemap submission, and resolving common errors like 404s and slow indexing. By consistently applying these advanced techniques, you can establish your site's authority, drive a predictable flow of organic traffic, and convert search engine visibility into tangible business results.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="single-blog-item floating-container-inner-alt hover-effect" data-category="performance">
+                    <div class="blog-thumb">
+                        <img src="images/speed.jpeg" alt="Website Speed Optimization">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> Nov 10, 2025</span>
+                            <span><i class="far fa-folder"></i> Performance</span>
+                        </div>
+                        <h3><a href="javascript:void(0)" onclick="toggleBlogContent(this)">Speed Matters: Optimizing Core Web Vitals for Conversion</a></h3>
+                        
+                        <p class="visible-excerpt">
+                            In the competitive digital landscape, website speed is a direct determinant of user engagement and conversion rates. Studies consistently demonstrate that even a one-second delay in page load time can severely increase bounce rates. Click to read the full analysis and technical roadmap.
+                        </p>
+
+                        <div class="full-content-area">
+                            <p>
+                                This critical article analyzes the impact of **Google's Core Web Vitals** (LCP, FID, CLS) on your site's ranking and user experience. We outline a technical strategy focused on optimizing performance, which includes implementing browser-level caching, minimizing HTTP requests through code minification (CSS/JS), utilizing modern image formats like WebP, and integrating a high-speed Content Delivery Network (CDN). By dedicating resources to these advanced optimization steps, you effectively transform a sluggish site into a high-performance asset that maximizes user retention and improves your Core Web Vitals scores.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contact-footer" class="footer-section">
+        <div class="container footer-plain-grid">
+            <div class="footer-col footer-intro-plain">
+                <div class="footer-logo">
+                    <img src="images/footer.png" alt="Sumon" class="footer-profile-img"/>
+                    <span class="logo-name">Sumon</span>
+                </div>
+                <p>
+                    My journey into WordPress started with a simple desire to create
+                    something of my own on the web. What began as curiosity quickly
+                    turned into a passion for building clean and modern websites.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col footer-links-plain">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Me</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> The Services</a></li>
+                    <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Project Showcase</a></li>
+                    <li><a href="blog.html"><i class="fas fa-chevron-right"></i> Our Articles</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact-plain">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Barabag, Mirpur-2, Dhaka, Bangladesh</p>
+                <p><i class="fas fa-phone-alt"></i> (+880) 1716309862</p>
+                <p><i class="fas fa-envelope"></i> samsarker77@gmail.com</p>
+            </div>
+
+            <div class="footer-col footer-projects-plain footer-project-box">
+                <h3>Projects</h3>
+                <div class="single-project-thumb">
+                    <img src="images/combo.png" alt="Latest Project Thumbnail" loading="lazy" class="project-thumb-img"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>&copy; 2024 Sumon Sarker. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    
+    // --- 1. Blog Accordion / Smooth Toggle Functionality ---
+    function toggleBlogContent(element) {
+        const article = element.closest('.single-blog-item');
+        const allArticles = document.querySelectorAll('.single-blog-item');
+
+        // Close all other open articles
+        allArticles.forEach(item => {
+            const content = item.querySelector('.full-content-area');
+            if (item !== article) {
+                item.classList.remove('active');
+                content.style.maxHeight = null; 
+            }
+        });
+
+        const fullContent = article.querySelector('.full-content-area');
+
+        if (article.classList.contains('active')) {
+            // Close current article
+            article.classList.remove('active');
+            fullContent.style.maxHeight = null;
+        } else {
+            // Open current article
+            article.classList.add('active');
+            fullContent.style.maxHeight = fullContent.scrollHeight + "px"; 
+        }
+    }
+
+    // --- 2. Search Functionality ---
+    function filterBlogs() {
+        let input = document.getElementById('searchInput');
+        let filter = input.value.toUpperCase();
+        let container = document.getElementById('blogContainer');
+        let articles = container.getElementsByTagName('article'); // নিশ্চিত করুন আপনার ব্লগ পোস্টগুলো <article> ট্যাগের মধ্যে আছে
+
+        for (let i = 0; i < articles.length; i++) {
+            let titleElement = articles[i].getElementsByTagName("h3")[0];
+            if (titleElement) { // Check if h3 exists
+                let txtValue = titleElement.textContent || titleElement.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    articles[i].style.display = ""; 
+                } else {
+                    articles[i].style.display = "none"; 
+                }
+            }
+        }
+    }
+
+    // --- 3. Category Filtering ---
+    function filterByCategory(category) {
+        let container = document.getElementById('blogContainer');
+        let articles = container.getElementsByTagName('article');
+
+        for (let i = 0; i < articles.length; i++) {
+            // নিশ্চিত করুন আপনার article ট্যাগে data-category অ্যাট্রিবিউট আছে
+            let articleCat = articles[i].getAttribute('data-category'); 
+            
+            if (category === 'all' || articleCat === category) {
+                articles[i].style.display = ""; 
+            } else {
+                articles[i].style.display = "none"; 
+            }
+        }
+    }
+    
+    // 🔴 ত্রুটিপূর্ণ নেভিগেশন কোডটি সম্পূর্ণরূপে মুছে ফেলা হয়েছে।
+    // আপনার সমস্ত <a href="page.html"> লিঙ্ক এখন স্বাভাবিকভাবে কাজ করবে এবং রিলোড সমস্যা দূর হবে।
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

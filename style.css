@@ -1,0 +1,1532 @@
+/* --- Global Variables and Setup --- */
+:root {
+    --bg-primary: #263238; /* Main Background Color (Dark Slate Gray) */
+    --bg-secondary: #354953; /* All Box/Container Background (Dark Cyan/Slate Blue) */
+    --text-color: #ECECDE; /* Main Text Color (Off-White) */
+    --accent-color: #FF4C60; /* Button, Hover, Accent Color (Vibrant Red) */
+    --button-hover-text: #263238; /* New: Button text color on hover */
+    --font-heading: 'Noto Sans SC', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* --- Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Increased Scroll Smoothness */
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading); 
+    color: white; 
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+p, ul, li {
+    font-family: var(--font-body); 
+    color: var(--text-color);
+}
+
+p {
+    margin-bottom: 1em;
+    font-size: 1.10rem; 
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff7886;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+.section-subheading {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+/* --- Utility Classes --- */
+.floating-container {
+    background-color: var(--bg-secondary);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+/* Inner boxes for Services/Portfolio/Pricing/FAQs (Default: #354953) */
+.floating-container-inner {
+    background-color: var(--bg-secondary); 
+    padding: 20px; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+/* Inner boxes for Education/Biography (New: #263238) - Padding Increased */
+.floating-container-inner-alt {
+    background-color: var(--bg-primary); 
+    padding: 25px; /* Increased Padding */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container Effect */
+.image-with-effect {
+    position: relative;
+    padding: 10px; 
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+}
+
+.image-with-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    border: 3px solid var(--accent-color);
+    border-radius: 12px;
+    z-index: 1;
+    opacity: 0.6; 
+    box-shadow: 0 0 20px 5px var(--accent-color), 0 0 40px 10px rgba(255, 76, 96, 0.5); 
+}
+
+.image-inner-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.image-inner-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* --- Buttons and Animation --- */
+.btn {
+    font-family: var(--font-body);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px; 
+    border-radius: 4px; 
+    font-size: 0.85rem; 
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; 
+    border: 1px solid transparent; 
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.btn i {
+    margin-right: 6px; 
+}
+
+/* All Buttons Default State */
+.primary-btn, .secondary-btn, .download-cv-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* All Buttons Hover State (Download button hover fixed) */
+.primary-btn:hover, 
+.secondary-btn:hover, 
+.download-cv-btn:hover, 
+.primary-btn:focus, 
+.secondary-btn:focus,
+.download-cv-btn:focus {
+    background-color: var(--accent-color); 
+    color: var(--button-hover-text); 
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    /* GLOOSY EFFECT */
+    box-shadow: 0 0 10px rgba(255, 76, 96, 0.8);
+}
+
+/* Pulse Animation Keyframes (Slower Effect) */
+@keyframes pulseButton {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 76, 96, 0.6); 
+    }
+    50% {
+        transform: scale(1.02); 
+        box-shadow: 0 0 0 20px rgba(255, 76, 96, 0); 
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 76, 96, 0);
+    }
+}
+
+.pulse-on-hover:hover, .pulse-on-hover:focus {
+    animation: pulseButton 2s infinite; 
+}
+
+
+/* --- Header Section --- */
+.main-header {
+    background-color: var(--bg-primary);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links ul li {
+    margin: 0 15px;
+}
+
+.nav-links ul li a {
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    font-size: 18px;
+}
+
+/* Navigation Hover Underline Effect */
+.nav-links ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links ul li a:hover::after {
+    transform: translateX(0);
+}
+
+.download-cv-btn {
+    min-width: 130px; 
+    padding: 6px 14px; 
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 100px 0;
+}
+
+.hero-content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-text-content h1 {
+    font-size: 2.5rem; 
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+.hero-text-content .greeting-text {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.hero-buttons a {
+    margin-right: 15px;
+}
+
+/* --- About Section --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 50px;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+.about-text-content .btn {
+    margin-top: 10px;
+}
+
+
+/* --- Services Section --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+}
+
+.service-box {
+    text-align: center;
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    transition: color 0.4s ease;
+}
+
+.service-box h3 {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+}
+.service-box p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Service Box Hover Effect */
+.hover-effect:hover {
+    transform: translateY(-8px);
+}
+.hover-effect {
+    transition: transform 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.service-box:hover {
+    background-color: var(--accent-color); 
+    box-shadow: 0 15px 30px rgba(255, 76, 96, 0.4);
+}
+
+.service-box:hover h3, .service-box:hover p {
+    color: white;
+}
+.service-box:hover .service-icon {
+    color: white;
+}
+
+/* --- Portfolio, Blog, Testimonial, Pricing Box Hover Border Effect --- */
+.hover-effect-border {
+    border: 2px solid transparent; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-effect-border:hover {
+    transform: translateY(-5px);
+    /* Border effect using box-shadow (like Client Testimonials) */
+    box-shadow: 0 0 0 2px var(--accent-color), 0 8px 20px rgba(0, 0, 0, 0.4); 
+}
+
+/* --- Portfolio Section --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px;
+}
+
+.project-box {
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.project-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.project-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+.project-content p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Makes paragraph fill space */
+}
+.project-content .project-btn {
+    margin-top: auto; /* Pushes button to the bottom (Same level) */
+    padding: 6px 12px; 
+    font-size: 0.85rem;
+}
+
+/* --- FAQs Section --- */
+.faqs-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 50px;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.faqs-image-container {
+    margin-top: 0; 
+}
+
+.faqs-accordion {
+    width: 100%;
+}
+
+.faq-item {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.accordion-header {
+    width: 100%;
+    background-color: var(--bg-secondary); 
+    color: var(--text-color);
+    padding: 20px;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.faq-item.active .accordion-header {
+    background-color: var(--accent-color); 
+    color: white;
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-content {
+    background-color: var(--bg-primary); 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion-content p {
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* --- My Journey Section --- */
+.journey-section {
+    background-color: var(--bg-primary);
+}
+.journey-content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 50px;
+}
+
+.journey-education .section-heading,
+.journey-bio .section-heading {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.education-timeline {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 20px;
+}
+
+.education-item {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.education-item::before {
+    content: '';
+    position: absolute;
+    left: -37px; /* Adjusted based on new padding */
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.education-item h3 {
+    font-size: 1.3rem;
+}
+.education-item .institution {
+    font-style: italic;
+    font-weight: 700; 
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+}
+.education-item .description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.journey-bio {
+    display: flex;
+    flex-direction: column;
+}
+.bio-image-container {
+    margin-bottom: 30px;
+}
+
+.bio-details p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--bg-primary);
+}
+.bio-details p:last-child {
+    border-bottom: none;
+}
+
+/* --- Blog Section (Latest Articles) - FIXED CODE (5 Lines) --- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px;
+}
+
+.blog-post {
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+    /* এখানে আপনার অন্যান্য কার্ড স্টাইল যোগ করুন, যেমন: box-shadow, background, ইত্যাদি। */
+}
+
+.blog-post img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* blog-post এর মধ্যে কন্টেন্টকে পুরো উচ্চতা দিতে সাহায্য করবে */
+    flex-grow: 1; 
+}
+
+.blog-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.blog-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    
+    /* 🟢 ফিক্সড: প্যারাগ্রাফ ৫ লাইনে সীমাবদ্ধ থাকবে */
+    display: -webkit-box;
+    -webkit-line-clamp: 5; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    /* 🟢 ফিক্সড: বাটনকে নিচে রাখার জন্য এটি 0 হবে */
+    flex-grow: 0; 
+}
+
+.blog-content .blog-btn { /* বাটনকে প্যারাগ্রাফের ঠিক নিচে রাখতে */
+    margin-top: auto; 
+    padding: 6px 12px; 
+    font-size: 0.85rem;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.testimonial-box {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.client-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+}
+
+.client-info h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+.client-info .designation {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    margin: 0;
+}
+.testimonial-box .quote {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+/* --- Pricing Section --- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.pricing-box {
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.plan-name {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    line-height: 1;
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    color: var(--text-color);
+}
+
+.features-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.features-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--bg-primary);
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    color: var(--text-color);
+}
+
+.features-list li i {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 1rem;
+}
+.features-list li .feature-excluded {
+    color: #e04456; 
+}
+
+.pricing-box .btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 7px 14px; 
+}
+
+/* --- Footer Section (Plain Layout) --- */
+.footer-section {
+    background-color: var(--bg-primary); 
+    padding: 50px 0 20px;
+    border-top: 1px solid var(--bg-secondary);
+}
+
+.footer-plain-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1fr; 
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.footer-col {
+    padding: 0; 
+}
+
+.footer-intro-plain .footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-intro-plain .footer-profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 3px solid var(--accent-color);
+}
+
+.footer-intro-plain .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+}
+
+.footer-intro-plain p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: white;
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+
+/* Footer Links - Smooth Hover Fixed */
+.footer-links-plain h3, .footer-contact-plain h3, .footer-projects-plain h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.footer-links-plain ul {
+    list-style: none;
+}
+
+.footer-links-plain ul li a {
+    display: block;
+    padding: 8px 0;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    /* Added padding-left transition for smoothness */
+    transition: color 0.3s ease, padding-left 0.3s ease; 
+}
+
+.footer-links-plain ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 10px; 
+}
+
+.footer-links-plain ul li a i {
+    font-size: 0.7rem;
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+/* Footer Contact */
+.footer-contact-plain p {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.footer-contact-plain p i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+
+/* Footer Projects - Single Large Image Box Setup */
+.footer-project-box {
+    /* Made the container larger by giving it background and padding */
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-projects-plain .single-project-thumb {
+    width: 100%;
+    height: auto;
+    /* Maintain aspect ratio / fit content nicely */
+    display: block; 
+}
+
+.project-thumb-img { 
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 2px solid var(--bg-secondary);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+
+.project-thumb-img:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--accent-color), 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding: 20px 0 0;
+    margin-top: 30px;
+    border-top: 1px solid var(--bg-secondary);
+}
+
+
+/* --- Responsiveness (Media Queries) --- */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 992px) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links {
+        order: 3;
+        flex-basis: 100%;
+        margin-top: 15px;
+    }
+    .hero-content-wrapper, .about-grid, .faqs-grid, .journey-content-wrapper, .footer-plain-grid {
+        grid-template-columns: 1fr; 
+    }
+    .hero-text-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-image-container, .about-image-container, .faqs-image-container, .bio-image-container {
+        max-width: 400px;
+        margin: 30px auto 0;
+    }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .portfolio-grid, .blog-grid, .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pricing-grid {
+        grid-template-columns: 1fr; 
+    }
+    .journey-content-wrapper {
+        gap: 30px;
+    }
+    .journey-bio {
+        padding-top: 20px;
+        border-top: 1px solid var(--bg-secondary);
+        margin-top: 20px;
+    }
+
+    .footer-col {
+        margin-bottom: 20px;
+        padding: 20px; 
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+    }
+    .footer-section {
+        background-color: var(--bg-primary); 
+    }
+    
+    /* Footer Project box on smaller screens should match others */
+    .footer-project-box {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+    .hero-buttons a {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .nav-links ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links ul li {
+        margin: 5px 10px;
+    }
+    .services-grid, .portfolio-grid, .blog-grid, .testimonials-grid {
+        grid-template-columns: 1fr; 
+    }
+    .section-heading {
+        font-size: 2rem;
+    }
+    .footer-plain-grid {
+        gap: 20px;
+    }
+}
+
+/* View Projects Button Styling (Smaller Version) */
+.view-projects-wrapper {
+    text-align: center;
+    margin-top: 30px; /* পূর্বের 40px থেকে কমানো */
+}
+
+#view-projects-btn {
+    font-size: 14px;       /* পূর্বের 18px থেকে ছোটানো */
+    padding: 8px 20px;     /* পূর্বের 12px 28px থেকে ছোটানো */
+    border-radius: 5px;    /* একটু ছোট রেডিয়াস */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#view-projects-btn:hover {
+    transform: translateY(-2px);  /* পূর্বের -3px থেকে কমানো */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* পূর্বের 8px 20px থেকে কমানো */
+}
+
+
+
+/* About Me Section */
+
+/* --- About Page Specific Styles --- */
+/* Common Colors: Main BG: #212529 (Assumed from previous context), Container Outer: #354953, Container Inner: #263238, Accent: #FF4C60 */
+
+
+/* Design Base Classes */
+.floating-container {
+    background-color: #354953; /* Main Container Color */
+    padding: 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.floating-container-inner-alt {
+    background-color: #263238; /* Inner Box Color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* 1. Section 1: Page Banner (Background Image - REUSABLE BLOCK) */
+/* **গুরুত্বপূর্ণ: 'hero-bg.jpg' নামে ইমেজটি assets/images/ ফোল্ডারে রাখুন** */
+.page-header-banner {
+    background-image: url('images/hero-bg.png'); 
+    /* যদি আপনার CSS ফাইলটি সরাসরি রুটে থাকে, তবে path হবে: url('assets/images/hero-bg.jpg') */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 150px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 0px;
+}
+
+.page-header-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(38, 50, 56, 0.85); /* Dark overlay */
+}
+
+.page-header-banner h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 2.2rem; 
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    border-bottom: 4px solid #FF4C60; 
+    padding-bottom: 8px;
+}
+/* ... বাকি about.css কোড অপরিবর্তিত থাকবে ... */
+
+/* Section 2: Intro */
+.about-intro-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+
+/* 2. Section 3: My Journey */
+.journey-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0;
+}
+.journey-section .section-heading {
+    text-align: center;
+}
+.education-timeline {
+    position: relative;
+    padding: 20px 0 20px 20px;
+}
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: #354953;
+}
+.education-item {
+    position: relative;
+    margin-bottom: 35px;
+    margin-left: 10px; 
+}
+.education-item::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: -18px; 
+    width: 16px;
+    height: 16px;
+    background: #263238; 
+    border: 3px solid #FF4C60;
+    border-radius: 50%;
+    z-index: 10;
+}
+.education-item h3 {
+    font-size: 1.3rem;
+    color: #FF4C60;
+    margin-bottom: 5px;
+}
+.education-item .institution {
+    font-size: 0.95rem;
+    color: #999;
+    margin-bottom: 8px;
+}
+.education-item .institution i {
+    color: #FF4C60;
+    margin-right: 5px;
+}
+.education-item .description p {
+    color: #ccc;
+    font-size: 1rem;
+}
+.bio-details {
+    padding: 25px; 
+}
+.bio-details p {
+    display: flex; 
+    align-items: center;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.bio-details strong {
+    color: #FF4C60;
+    min-width: 120px; 
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* Section 4: My Core Skills */
+.skill-item { margin-bottom: 25px; }
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #ECECDE;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 12px;
+    background-color: #1a2327; 
+    border-radius: 6px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #FF4C60; 
+    width: 0; 
+    border-radius: 6px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* 4. Section 6: Contact Form Fix & Icon Alignment (FIXED) */
+.contact-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; 
+    gap: 40px;
+}
+
+.contact-info-list p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
+}
+.contact-info-list i {
+    color: #FF4C60;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    padding-top: 3px;
+}
+/* Social Icon Centering & Appearance (FIXED) */
+.contact-info-list .social-links {
+    display: flex;
+    justify-content: center; /* Centering the icons */
+    margin-top: 40px;
+    gap: 15px;
+}
+.contact-info-list .social-links a.social-icon {
+    display: flex;
+    align-items: center; /* Vertically center icon */
+    justify-content: center; /* Horizontally center icon */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #455a64; /* Base color for social icons */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth animation */
+}
+.contact-info-list .social-links a.social-icon:hover {
+    background-color: #FF4C60;
+    transform: translateY(-3px);
+}
+.contact-info-list .social-links a.social-icon i {
+    color: #fff; /* Ensure inner icon is white/visible */
+    margin: 0;
+    padding: 0;
+    font-size: 1rem; /* Adjust icon size */
+}
+
+/* Form Styles (Previous State) */
+.contact-form-wrapper input, 
+.contact-form-wrapper textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: #354953; 
+    border: 1px solid #455a64;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 20px; 
+    box-sizing: border-box;
+}
+.contact-form-wrapper textarea {
+    resize: none;
+}
+.contact-form-wrapper input:focus, 
+.contact-form-wrapper textarea:focus {
+    outline: none;
+    border-color: #FF4C60;
+}
+.contact-form-wrapper .btn {
+    margin-top: 0;
+}
+
+
+/* Responsive Adjustments (Previous State) */
+@media (max-width: 992px) {
+    .about-grid, .journey-content-wrapper, .contact-grid-layout {
+        grid-template-columns: 1fr;
+    }
+    .floating-container {
+        padding: 30px;
+    }
+    .journey-education, .journey-bio {
+        margin-bottom: 40px;
+    }
+}
+
+/* --- Portfolio Intro Section Styles --- */
+
+/* 1. Grid Layout for Text and Image */
+.portfolio-intro-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* More space for text on the left */
+    gap: 40px;
+    align-items: center; /* Vertically centers items */
+}
+
+/* 2. Text Content Styling */
+.intro-text-wrapper {
+    /* Inherits background and padding from floating-container-inner-alt */
+    padding: 30px; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-heading {
+    color: #FF4C60; /* Accent Color */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.intro-paragraph {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.intro-paragraph strong {
+    color: #fff; /* Highlight important words */
+}
+
+/* 3. Image Styling */
+.intro-image-wrapper {
+    position: relative;
+}
+
+.portfolio-intro-img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* 4. Responsive Design for smaller screens */
+@media (max-width: 992px) {
+    .portfolio-intro-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+    .intro-image-wrapper {
+        order: -1; /* Puts the image above the text (Optional) */
+    }
+}
+
+
+
+/* --- Blog Page Specific Styles (চূড়ান্ত ফিক্সসহ সম্পূর্ণ কোড) --- */
+
+/* Reusing your color variables logic */
+:root {
+    --bg-primary: #263238; /* Darkest Background */
+    --bg-secondary: #354953; /* Card Background */
+    --accent-color: #FF4C60; /* Accent Color */
+    --text-color: #ECECDE; /* Light Text */
+}
+
+/* 1. Main Grid Layout */
+.blog-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 50px;
+}
+
+/* --- LEFT SIDEBAR STYLES --- */
+.blog-sidebar .sidebar-widget {
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: var(--bg-secondary); 
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.widget-title {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.search-form { display: flex; position: relative; }
+.search-form input {
+    width: 100%;
+    padding: 12px 15px;
+    padding-right: 45px;
+    background-color: var(--bg-primary);
+    border: 1px solid #455a64;
+    color: #fff;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.search-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 45px;
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.category-list { list-style: none; padding: 0; margin: 0; }
+.category-list li { margin-bottom: 12px; border-bottom: 1px dashed #455a64; padding-bottom: 12px; }
+.category-list li:last-child { border-bottom: none; }
+.category-list li a {
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+.category-list li a:hover { color: var(--accent-color); padding-left: 8px; }
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag-cloud a {
+    font-size: 0.85rem;
+    color: #ccc;
+    background-color: var(--bg-primary);
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+.tag-cloud a:hover { background-color: var(--accent-color); color: #fff; }
+
+/* --- RIGHT SIDE: BLOG ITEMS --- */
+.blog-posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.single-blog-item {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    background-color: var(--bg-secondary); 
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.single-blog-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+/* Blog Image */
+.blog-thumb {
+    flex: 0 0 280px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 6px;
+    flex-shrink: 0; /* FIX ADDED */
+}
+.blog-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.single-blog-item:hover .blog-thumb img { transform: scale(1.1); }
+
+/* Blog Content */
+.blog-content {
+    flex: 1;
+    width: 100%; /* FIX ADDED */
+}
+
+.blog-meta {
+    font-size: 0.85rem;
+    color: #bbb;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 20px;
+}
+.blog-meta i { color: var(--accent-color); margin-right: 8px; }
+
+.blog-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+.blog-content h3 a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    display: block;
+}
+.blog-content h3 a:hover { color: var(--accent-color); }
+.single-blog-item.active h3 a { color: var(--accent-color); }
+
+/* Paragraph Style */
+.blog-content p, .full-content-area p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+/* Accordion Container */
+.full-content-area {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, padding-top 0.4s ease;
+    padding-top: 0;
+}
+
+/* When Active */
+.single-blog-item.active .full-content-area {
+    padding-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .blog-layout-grid { grid-template-columns: 1fr; }
+    .single-blog-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .blog-thumb {
+        width: 100%;
+        height: 250px;
+        flex: none;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+/* --- CSS: চূড়ান্ত প্যাডিং ও সেন্টারিং --- */
+
+/* ১. Outer Section/Wrapper: (সেন্টারিং নিশ্চিত করা হলো) */
+.map-section-wrapper {
+    background-color: #263238; 
+    padding: 70px 0;
+    
+    /* সেন্টারিং নিশ্চিত করার জন্য Flexbox ব্যবহার করা হলো */
+    display: flex;
+    justify-content: center;
+}
+
+/* ২. Main/Outer Container: The Frame (#354953) */
+.map-floating-container-outer {
+    background-color: #354953; 
+    padding: 50px; 
+    width: 90%;
+    max-width: 1150px;
+    border-radius: 10px; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); 
+    height: 550px; 
+}
+
+/* ৩. New Inner Container: Map Background (#263238) */
+.map-inner-wrapper {
+    background-color: #263238; 
+    
+    /* প্যাডিং দ্বিগুণ করা হলো: এখন #263238 রঙটি আরও মোটা দেখাবে */
+    padding: 25px; 
+    
+    width: 100%;
+    height: 100%;
+    border-radius: 8px; 
+}
+
+/* iframe-এর কোড অপরিবর্তিত থাকবে */
+.map-inner-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px; 
+    border: none;
+}
